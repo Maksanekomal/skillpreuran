@@ -6,6 +6,32 @@ const Learning = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  // COMPLETED RESOURCES
+  const [completedResources, setCompletedResources] = useState(
+    JSON.parse(localStorage.getItem("completedResources")) || []
+  );
+
+  // MARK RESOURCE COMPLETE
+  const markComplete = (title) => {
+
+    if (!completedResources.includes(title)) {
+
+      const updatedResources = [
+        ...completedResources,
+        title
+      ];
+
+      setCompletedResources(updatedResources);
+
+      localStorage.setItem(
+        "completedResources",
+        JSON.stringify(updatedResources)
+      );
+
+      alert("Resource Completed ✅");
+    }
+  };
+
   const resources = [
 
     {
@@ -169,20 +195,39 @@ const Learning = () => {
                       {resource.description}
                     </p>
 
-                    {/* BUTTON */}
-                    <a
-                      href={resource.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    {/* BUTTONS */}
+                    <div className="flex gap-4 mt-6">
 
-                      <button className="mt-6 bg-white dark:bg-gray-700 px-5 py-2 rounded-xl text-blue-700 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+                      {/* VIEW RESOURCE */}
+                      <a
+                        href={resource.link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
 
-                        View Resource
+                        <button className="bg-white dark:bg-gray-700 px-5 py-2 rounded-xl text-blue-700 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+
+                          View Resource
+
+                        </button>
+
+                      </a>
+
+                      {/* COMPLETE BUTTON */}
+                      <button
+                        onClick={() => markComplete(resource.title)}
+                        className="bg-green-100 text-green-700 px-5 py-2 rounded-xl hover:bg-green-200 transition"
+                      >
+
+                        {
+                          completedResources.includes(resource.title)
+                            ? "Completed ✅"
+                            : "Mark Complete"
+                        }
 
                       </button>
 
-                    </a>
+                    </div>
 
                   </div>
 

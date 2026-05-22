@@ -17,6 +17,7 @@ import Learning from "./pages/Learning";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import SavedIdeas from "./pages/SavedIdeas";
+import Mentors from "./pages/Mentors";
 
 function App() {
 
@@ -50,6 +51,8 @@ function App() {
               <Route path="/explore" element={<Explore />} />
 
               <Route path="/roadmap" element={<Roadmap />} />
+
+              <Route path="/mentors" element={<Mentors />} />
 
               <Route
                 path="/assessment"

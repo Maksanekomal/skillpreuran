@@ -1,5 +1,4 @@
-
-
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const Roadmap = () => {
@@ -7,6 +6,41 @@ const Roadmap = () => {
   const location = useLocation();
 
   const idea = location.state?.idea || "Business";
+
+  // PROGRESS TRACKING
+  const [completedSteps, setCompletedSteps] = useState(() => {
+
+    return JSON.parse(
+      localStorage.getItem("completedSteps")
+    ) || [];
+
+  });
+
+  const totalSteps = 4;
+
+  const handleComplete = (step) => {
+
+    if (!completedSteps.includes(step)) {
+
+      const updatedSteps = [
+        ...completedSteps,
+        step
+      ];
+
+      setCompletedSteps(updatedSteps);
+
+      // SAVE TO LOCAL STORAGE
+      localStorage.setItem(
+        "completedSteps",
+        JSON.stringify(updatedSteps)
+      );
+
+    }
+
+  };
+
+  const progressPercentage =
+    (completedSteps.length / totalSteps) * 100;
 
   return (
 
@@ -32,6 +66,43 @@ const Roadmap = () => {
         </div>
 
       </section>
+
+      {/* PROGRESS TRACKER */}
+      <div className="max-w-7xl mx-auto px-6 pt-10">
+
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm">
+
+          <div className="flex items-center justify-between">
+
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+              Your Progress
+            </h2>
+
+            <p className="text-lg font-semibold text-blue-600">
+              {Math.round(progressPercentage)}%
+            </p>
+
+          </div>
+
+          {/* PROGRESS BAR */}
+          <div className="w-full bg-gray-200 rounded-full h-4 mt-6">
+
+            <div
+              className="bg-blue-600 h-4 rounded-full transition-all duration-500"
+              style={{ width: `${progressPercentage}%` }}
+            ></div>
+
+          </div>
+
+          <p className="mt-4 text-gray-600 dark:text-gray-300">
+
+            Completed {completedSteps.length} out of {totalSteps} steps
+
+          </p>
+
+        </div>
+
+      </div>
 
       {/* OVERVIEW SECTION */}
       <section className="max-w-7xl mx-auto px-6 py-16">
@@ -87,6 +158,19 @@ const Roadmap = () => {
 
                     </p>
 
+                    <button
+                      onClick={() => handleComplete(1)}
+                      className="mt-4 bg-blue-100 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-200 transition"
+                    >
+
+                      {
+                        completedSteps.includes(1)
+                          ? "Completed ✅"
+                          : "Mark Complete"
+                      }
+
+                    </button>
+
                   </div>
 
                 </div>
@@ -110,6 +194,19 @@ const Roadmap = () => {
                       and learning resources required for your business.
 
                     </p>
+
+                    <button
+                      onClick={() => handleComplete(2)}
+                      className="mt-4 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-200 transition"
+                    >
+
+                      {
+                        completedSteps.includes(2)
+                          ? "Completed ✅"
+                          : "Mark Complete"
+                      }
+
+                    </button>
 
                   </div>
 
@@ -135,6 +232,19 @@ const Roadmap = () => {
 
                     </p>
 
+                    <button
+                      onClick={() => handleComplete(3)}
+                      className="mt-4 bg-purple-100 text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-200 transition"
+                    >
+
+                      {
+                        completedSteps.includes(3)
+                          ? "Completed ✅"
+                          : "Mark Complete"
+                      }
+
+                    </button>
+
                   </div>
 
                 </div>
@@ -159,33 +269,21 @@ const Roadmap = () => {
 
                     </p>
 
+                    <button
+                      onClick={() => handleComplete(4)}
+                      className="mt-4 bg-pink-100 text-pink-700 px-4 py-2 rounded-lg hover:bg-pink-200 transition"
+                    >
+
+                      {
+                        completedSteps.includes(4)
+                          ? "Completed ✅"
+                          : "Mark Complete"
+                      }
+
+                    </button>
+
                   </div>
 
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* LEARNING RESOURCES */}
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
-
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
-                Learning Resources
-              </h2>
-
-              <div className="mt-8 space-y-5">
-
-                <div className="border border-gray-200 dark:border-gray-700 p-5 rounded-xl dark:text-white">
-                  🎥 Beginner Business Video Course
-                </div>
-
-                <div className="border border-gray-200 dark:border-gray-700 p-5 rounded-xl dark:text-white">
-                  📄 Startup Checklist
-                </div>
-
-                <div className="border border-gray-200 dark:border-gray-700 p-5 rounded-xl dark:text-white">
-                  📘 Marketing & Branding Guide
                 </div>
 
               </div>
@@ -237,57 +335,6 @@ const Roadmap = () => {
                 </div>
 
               </div>
-
-            </div>
-
-            {/* SKILLS REQUIRED */}
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
-
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                Skills Required
-              </h2>
-
-              <div className="flex flex-wrap gap-3 mt-6">
-
-                <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full">
-                  Communication
-                </span>
-
-                <span className="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full">
-                  Creativity
-                </span>
-
-                <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">
-                  Marketing
-                </span>
-
-                <span className="bg-pink-100 text-pink-700 px-4 py-2 rounded-full">
-                  Business Planning
-                </span>
-
-              </div>
-
-            </div>
-
-            {/* MENTOR SUPPORT */}
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm">
-
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                Mentor Support
-              </h2>
-
-              <p className="mt-5 text-gray-600 dark:text-gray-300 leading-7">
-
-                Connect with experienced mentors for business guidance,
-                pricing strategies, and marketing support.
-
-              </p>
-
-              <button className="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition">
-
-                Connect Mentor
-
-              </button>
 
             </div>
 

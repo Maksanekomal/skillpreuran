@@ -53,6 +53,14 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             Saved Ideas
           </Link>
 
+          <Link to="/mentors" className="hover:text-blue-600 transition">
+  Mentors
+</Link>
+
+<Link to="/dashboard" className="hover:text-blue-600 transition">
+  Dashboard
+</Link>
+
         </div>
 
         {/* RIGHT SECTION */}
