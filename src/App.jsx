@@ -18,6 +18,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import SavedIdeas from "./pages/SavedIdeas";
 import Mentors from "./pages/Mentors";
+import Recommendations from "./pages/Recommendations";
 
 function App() {
 
@@ -25,18 +26,18 @@ function App() {
 
   return (
 
-    <div className={darkMode ? "dark bg-gray-900" : "bg-white"}>
+    <div className={darkMode ? "dark" : ""}>
 
       <BrowserRouter>
 
-        <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 transition duration-300">
+        <div className="min-h-screen flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300">
 
           <Navbar
             darkMode={darkMode}
             setDarkMode={setDarkMode}
           />
 
-          <main className="flex-grow p-8 text-black dark:text-white">
+          <main className="flex-grow">
 
             <Routes>
 
@@ -50,7 +51,7 @@ function App() {
 
               <Route path="/explore" element={<Explore />} />
 
-              <Route path="/roadmap" element={<Roadmap />} />
+              <Route path="/roadmap/:businessType" element={<Roadmap />} />
 
               <Route path="/mentors" element={<Mentors />} />
 
@@ -60,22 +61,29 @@ function App() {
               />
 
               <Route path="/learning" element={<Learning />} />
+
               <Route
-  path="/dashboard"
-  element={
-    <ProtectedRoute>
-      <Dashboard />
-    </ProtectedRoute>
-  }
-/>
-<Route
-  path="/saved-ideas"
-  element={
-    <ProtectedRoute>
-      <SavedIdeas />
-    </ProtectedRoute>
-  }
-/>
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/saved-ideas"
+                element={
+                  <ProtectedRoute>
+                    <SavedIdeas />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/recommendations"
+                element={<Recommendations />}
+              />
 
             </Routes>
 

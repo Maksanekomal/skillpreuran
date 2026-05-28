@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 
+import { useParams } from "react-router-dom";
 const Roadmap = () => {
 
-  const location = useLocation();
+  const { businessType } = useParams();
 
-  const idea = location.state?.idea || "Business";
-
+const idea =
+  businessType.charAt(0).toUpperCase() +
+  businessType.slice(1);
   // PROGRESS TRACKING
   const [completedSteps, setCompletedSteps] = useState(() => {
 

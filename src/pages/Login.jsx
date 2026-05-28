@@ -65,9 +65,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-6 py-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center px-6 py-20 transition duration-300">
 
-      <div className="w-full max-w-5xl grid md:grid-cols-2 bg-white rounded-3xl shadow-xl overflow-hidden">
+      <div className="w-full max-w-5xl grid md:grid-cols-2 bg-white dark:bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-800">
 
         {/* LEFT SIDE */}
         <div className="bg-gradient-to-br from-indigo-700 to-blue-600 text-white p-12 flex flex-col justify-center">
@@ -109,13 +109,13 @@ const Login = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="p-10 md:p-14">
+        <div className="p-10 md:p-14 bg-white dark:bg-gray-900">
 
-          <h2 className="text-4xl font-bold text-gray-800">
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
             Login
           </h2>
 
-          <p className="mt-3 text-gray-500">
+          <p className="mt-3 text-gray-500 dark:text-gray-300">
             Login to continue building your business journey.
           </p>
 
@@ -128,7 +128,7 @@ const Login = () => {
             {/* EMAIL */}
             <div>
 
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-200 font-medium mb-2">
                 Email Address
               </label>
 
@@ -138,7 +138,7 @@ const Login = () => {
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-5 py-3 outline-none focus:border-blue-500"
+                className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white rounded-xl px-5 py-3 outline-none focus:border-blue-500"
                 required
               />
 
@@ -147,7 +147,7 @@ const Login = () => {
             {/* PASSWORD */}
             <div>
 
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-200 font-medium mb-2">
                 Password
               </label>
 
@@ -157,7 +157,7 @@ const Login = () => {
                 placeholder="Enter password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-5 py-3 outline-none focus:border-blue-500"
+                className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white rounded-xl px-5 py-3 outline-none focus:border-blue-500"
                 required
               />
 
@@ -166,7 +166,7 @@ const Login = () => {
             {/* MESSAGE */}
             {
               message && (
-                <p className="text-center text-blue-600 font-medium">
+                <p className="text-center text-blue-600 dark:text-blue-400 font-medium">
                   {message}
                 </p>
               )
@@ -189,14 +189,14 @@ const Login = () => {
 
             <Link
               to="/forgot-password"
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
             >
               Forgot Password?
             </Link>
 
             <Link
               to="/register"
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
             >
               Create Account
             </Link>

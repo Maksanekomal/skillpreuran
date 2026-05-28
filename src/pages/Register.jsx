@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -54,9 +55,9 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-6 py-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center px-6 py-20 transition duration-300">
 
-      <div className="w-full max-w-5xl grid md:grid-cols-2 bg-white rounded-3xl shadow-xl overflow-hidden">
+      <div className="w-full max-w-5xl grid md:grid-cols-2 bg-white dark:bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-800">
 
         {/* LEFT SIDE */}
         <div className="bg-gradient-to-br from-blue-700 to-indigo-600 text-white p-12 flex flex-col justify-center">
@@ -99,13 +100,13 @@ const Register = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="p-10 md:p-14">
+        <div className="p-10 md:p-14 bg-white dark:bg-gray-900">
 
-          <h2 className="text-4xl font-bold text-gray-800">
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
             Register
           </h2>
 
-          <p className="mt-3 text-gray-500">
+          <p className="mt-3 text-gray-500 dark:text-gray-300">
             Create your account and begin your entrepreneurial journey.
           </p>
 
@@ -118,7 +119,7 @@ const Register = () => {
             {/* NAME */}
             <div>
 
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-200 font-medium mb-2">
                 Full Name
               </label>
 
@@ -128,7 +129,7 @@ const Register = () => {
                 placeholder="Enter your name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-5 py-3 outline-none focus:border-blue-500"
+                className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white rounded-xl px-5 py-3 outline-none focus:border-blue-500"
                 required
               />
 
@@ -137,7 +138,7 @@ const Register = () => {
             {/* EMAIL */}
             <div>
 
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-200 font-medium mb-2">
                 Email Address
               </label>
 
@@ -147,7 +148,7 @@ const Register = () => {
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-5 py-3 outline-none focus:border-blue-500"
+                className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white rounded-xl px-5 py-3 outline-none focus:border-blue-500"
                 required
               />
 
@@ -156,7 +157,7 @@ const Register = () => {
             {/* PASSWORD */}
             <div>
 
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-200 font-medium mb-2">
                 Password
               </label>
 
@@ -166,7 +167,7 @@ const Register = () => {
                 placeholder="Enter password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-5 py-3 outline-none focus:border-blue-500"
+                className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white rounded-xl px-5 py-3 outline-none focus:border-blue-500"
                 required
               />
 
@@ -175,7 +176,7 @@ const Register = () => {
             {/* ROLE */}
             <div>
 
-              <label className="block text-gray-700 font-medium mb-2">
+              <label className="block text-gray-700 dark:text-gray-200 font-medium mb-2">
                 Select Role
               </label>
 
@@ -183,7 +184,7 @@ const Register = () => {
                 name="role"
                 value={formData.role}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl px-5 py-3 outline-none focus:border-blue-500"
+                className="w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-white rounded-xl px-5 py-3 outline-none focus:border-blue-500"
               >
                 <option value="user">User</option>
                 <option value="mentor">Mentor</option>
@@ -194,7 +195,7 @@ const Register = () => {
             {/* MESSAGE */}
             {
               message && (
-                <p className="text-center text-blue-600 font-medium">
+                <p className="text-center text-blue-600 dark:text-blue-400 font-medium">
                   {message}
                 </p>
               )
@@ -213,13 +214,13 @@ const Register = () => {
           </form>
 
           {/* LOGIN LINK */}
-          <p className="mt-8 text-center text-gray-600">
+          <p className="mt-8 text-center text-gray-600 dark:text-gray-300">
 
             Already have an account?
 
             <Link
               to="/login"
-              className="text-blue-600 font-semibold ml-2 hover:underline"
+              className="text-blue-600 dark:text-blue-400 font-semibold ml-2 hover:underline"
             >
               Login
             </Link>

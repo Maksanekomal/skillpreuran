@@ -44,7 +44,7 @@ const SavedIdeas = () => {
 
   return (
 
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16 px-6 transition duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-16 px-6 transition duration-300">
 
       <div className="max-w-6xl mx-auto">
 
@@ -88,7 +88,7 @@ const SavedIdeas = () => {
         {
           savedIdeas.length === 0 && (
 
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-md p-12 mt-16 text-center">
+            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl shadow-md p-12 mt-16 text-center">
 
               <div className="text-6xl">
                 📂
@@ -121,14 +121,14 @@ const SavedIdeas = () => {
 
                   <div
                     key={index}
-                    className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-md hover:shadow-xl transition"
+                    className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-8 rounded-3xl shadow-md hover:shadow-xl transition"
                   >
 
                     <div className="text-5xl">
                       🚀
                     </div>
 
-                    <h2 className="mt-6 text-2xl font-bold text-blue-700">
+                    <h2 className="mt-6 text-2xl font-bold text-blue-700 dark:text-blue-400">
                       {idea}
                     </h2>
 
@@ -140,7 +140,7 @@ const SavedIdeas = () => {
                     </p>
 
                     {/* BUTTONS */}
-                    <div className="flex gap-4 mt-6">
+                    <div className="flex gap-4 mt-6 flex-wrap">
 
                       <button
                         onClick={() =>
@@ -148,7 +148,7 @@ const SavedIdeas = () => {
                             state: { idea }
                           })
                         }
-                        className="bg-blue-100 text-blue-700 px-5 py-2 rounded-lg hover:bg-blue-200 transition"
+                        className="bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-5 py-2 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition"
                       >
 
                         Explore
@@ -157,7 +157,7 @@ const SavedIdeas = () => {
 
                       <button
                         onClick={() => removeIdea(idea)}
-                        className="bg-red-100 text-red-700 px-5 py-2 rounded-lg hover:bg-red-200 transition"
+                        className="bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 px-5 py-2 rounded-lg hover:bg-red-200 dark:hover:bg-red-800 transition"
                       >
 
                         Remove

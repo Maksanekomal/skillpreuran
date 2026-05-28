@@ -1,5 +1,4 @@
 
-
 import { useState } from "react";
 
 const Learning = () => {
@@ -42,7 +41,7 @@ const Learning = () => {
       description:
         "Learn the fundamentals of starting and managing a small business.",
       icon: "🎥",
-      color: "bg-blue-50",
+      color: "bg-blue-50 dark:bg-blue-900/20",
       link: "https://www.youtube.com",
     },
 
@@ -54,7 +53,7 @@ const Learning = () => {
       description:
         "Understand how to create business plans, goals, and strategies.",
       icon: "📄",
-      color: "bg-green-50",
+      color: "bg-green-50 dark:bg-green-900/20",
       link: "https://www.google.com",
     },
 
@@ -66,7 +65,7 @@ const Learning = () => {
       description:
         "A step-by-step checklist to market your startup effectively.",
       icon: "✅",
-      color: "bg-yellow-50",
+      color: "bg-yellow-50 dark:bg-yellow-900/20",
       link: "https://www.google.com",
     },
 
@@ -78,7 +77,7 @@ const Learning = () => {
       description:
         "Learn how to promote your business using Instagram and Facebook.",
       icon: "📱",
-      color: "bg-pink-50",
+      color: "bg-pink-50 dark:bg-pink-900/20",
       link: "https://www.youtube.com",
     },
 
@@ -90,7 +89,7 @@ const Learning = () => {
       description:
         "Understand pricing, budgeting, and startup cost calculations.",
       icon: "💰",
-      color: "bg-purple-50",
+      color: "bg-purple-50 dark:bg-purple-900/20",
       link: "https://www.google.com",
     },
 
@@ -102,7 +101,7 @@ const Learning = () => {
       description:
         "Improve customer trust and communication for your business.",
       icon: "🤝",
-      color: "bg-orange-50",
+      color: "bg-orange-50 dark:bg-orange-900/20",
       link: "https://www.google.com",
     },
 
@@ -110,7 +109,7 @@ const Learning = () => {
 
   return (
 
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-16 px-6 transition duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-16 px-6 transition duration-300">
 
       <div className="max-w-7xl mx-auto">
 
@@ -158,7 +157,7 @@ const Learning = () => {
 
                 <div
                   key={index}
-                  className={`${resource.color} dark:bg-gray-800 p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-300`}
+                  className={`${resource.color} border border-transparent dark:border-gray-700 p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-300`}
                 >
 
                   {/* ICON */}
@@ -196,7 +195,7 @@ const Learning = () => {
                     </p>
 
                     {/* BUTTONS */}
-                    <div className="flex gap-4 mt-6">
+                    <div className="flex gap-4 mt-6 flex-wrap">
 
                       {/* VIEW RESOURCE */}
                       <a
@@ -216,7 +215,7 @@ const Learning = () => {
                       {/* COMPLETE BUTTON */}
                       <button
                         onClick={() => markComplete(resource.title)}
-                        className="bg-green-100 text-green-700 px-5 py-2 rounded-xl hover:bg-green-200 transition"
+                        className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-5 py-2 rounded-xl hover:bg-green-200 dark:hover:bg-green-800/40 transition"
                       >
 
                         {

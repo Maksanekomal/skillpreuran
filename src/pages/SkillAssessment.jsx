@@ -73,18 +73,18 @@ const SkillAssessment = () => {
 
   return (
 
-    <div className="min-h-screen bg-gray-50 py-16 px-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-16 px-6 transition-colors duration-300">
 
       <div className="max-w-5xl mx-auto">
 
         {/* HEADER */}
         <div className="text-center">
 
-          <h1 className="text-5xl font-bold text-gray-800">
+          <h1 className="text-5xl font-bold text-gray-800 dark:text-white">
             Skill Assessment
           </h1>
 
-          <p className="mt-5 text-lg text-gray-600 max-w-3xl mx-auto leading-8">
+          <p className="mt-5 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-8">
 
             Select your skills and discover business opportunities
             that match your strengths and interests.
@@ -94,16 +94,16 @@ const SkillAssessment = () => {
         </div>
 
         {/* FORM */}
-        <div className="bg-white rounded-3xl shadow-md p-10 mt-14">
+        <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-md p-10 mt-14 border dark:border-gray-800 transition-colors duration-300">
 
-          <label className="block text-xl font-semibold text-gray-700 mb-4">
+          <label className="block text-xl font-semibold text-gray-700 dark:text-white mb-4">
             Select Your Skill
           </label>
 
           <select
             value={selectedSkill}
             onChange={(e) => setSelectedSkill(e.target.value)}
-            className="w-full border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-500"
+            className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-xl px-5 py-4 outline-none focus:border-blue-500"
           >
 
             <option value="">
@@ -155,7 +155,7 @@ const SkillAssessment = () => {
                 placeholder="Search business ideas..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white border border-gray-300 rounded-xl px-5 py-4 outline-none focus:border-blue-500 shadow-sm"
+                className="w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-700 rounded-xl px-5 py-4 outline-none focus:border-blue-500 shadow-sm transition-colors duration-300"
               />
 
             </div>
@@ -169,7 +169,7 @@ const SkillAssessment = () => {
 
             <div className="mt-14">
 
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">
+              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">
                 Recommended Business Ideas 🚀
               </h2>
 
@@ -186,14 +186,14 @@ const SkillAssessment = () => {
 
                       <div
                         key={index}
-                        className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition"
+                        className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-xl transition border dark:border-gray-800"
                       >
 
-                        <h3 className="text-2xl font-semibold text-blue-700">
+                        <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-400">
                           {idea}
                         </h3>
 
-                        <p className="mt-4 text-gray-600 leading-7">
+                        <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
 
                           Start building your entrepreneurial journey
                           with this business opportunity.
@@ -205,12 +205,12 @@ const SkillAssessment = () => {
 
                           {/* ROADMAP BUTTON */}
                           <button
-                           onClick={() =>
-                               navigate("/roadmap", {
-                                  state: { idea }
-                                   })
-                                  }
-                            className="bg-blue-100 text-blue-700 px-5 py-2 rounded-lg hover:bg-blue-200 transition"
+                            onClick={() =>
+                              navigate("/roadmap", {
+                                state: { idea }
+                              })
+                            }
+                            className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-5 py-2 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition"
                           >
 
                             Explore Roadmap
@@ -220,7 +220,7 @@ const SkillAssessment = () => {
                           {/* SAVE BUTTON */}
                           <button
                             onClick={() => saveIdea(idea)}
-                            className="bg-yellow-100 text-yellow-700 px-5 py-2 rounded-lg hover:bg-yellow-200 transition"
+                            className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-5 py-2 rounded-lg hover:bg-yellow-200 dark:hover:bg-yellow-800 transition"
                           >
 
                             Save Idea

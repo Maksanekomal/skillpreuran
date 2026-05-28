@@ -23,12 +23,12 @@ const Dashboard = () => {
 
   return (
 
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 px-6 py-16 transition duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 px-6 py-16 transition duration-300">
 
       <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-md p-10">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md p-10">
 
           <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
             Welcome, {user?.name} 👋
@@ -44,9 +44,9 @@ const Dashboard = () => {
         <div className="grid md:grid-cols-4 gap-8 mt-10">
 
           {/* SAVED IDEAS */}
-          <div className="bg-blue-50 dark:bg-gray-800 p-8 rounded-2xl">
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 p-8 rounded-2xl">
 
-            <h2 className="text-4xl font-bold text-blue-700">
+            <h2 className="text-4xl font-bold text-blue-700 dark:text-blue-400">
               {savedIdeas.length}
             </h2>
 
@@ -57,9 +57,9 @@ const Dashboard = () => {
           </div>
 
           {/* ROADMAPS */}
-          <div className="bg-green-50 dark:bg-gray-800 p-8 rounded-2xl">
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 p-8 rounded-2xl">
 
-            <h2 className="text-4xl font-bold text-green-700">
+            <h2 className="text-4xl font-bold text-green-700 dark:text-green-400">
               {completedSteps.length}
             </h2>
 
@@ -70,9 +70,9 @@ const Dashboard = () => {
           </div>
 
           {/* LEARNING */}
-          <div className="bg-purple-50 dark:bg-gray-800 p-8 rounded-2xl">
+          <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-800 p-8 rounded-2xl">
 
-            <h2 className="text-4xl font-bold text-purple-700">
+            <h2 className="text-4xl font-bold text-purple-700 dark:text-purple-400">
               5
             </h2>
 
@@ -83,9 +83,9 @@ const Dashboard = () => {
           </div>
 
           {/* MENTORS */}
-          <div className="bg-orange-50 dark:bg-gray-800 p-8 rounded-2xl">
+          <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800 p-8 rounded-2xl">
 
-            <h2 className="text-4xl font-bold text-orange-700">
+            <h2 className="text-4xl font-bold text-orange-700 dark:text-orange-400">
               {connectedMentors.length}
             </h2>
 
@@ -98,7 +98,7 @@ const Dashboard = () => {
         </div>
 
         {/* PROGRESS SECTION */}
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-md p-10 mt-12">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md p-10 mt-12">
 
           <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
             Your Progress 📈
@@ -115,13 +115,13 @@ const Dashboard = () => {
                   Entrepreneurial Learning
                 </p>
 
-                <p className="text-blue-700 font-semibold">
+                <p className="text-blue-700 dark:text-blue-400 font-semibold">
                   70%
                 </p>
 
               </div>
 
-              <div className="w-full bg-gray-200 rounded-full h-4">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
 
                 <div className="bg-blue-600 h-4 rounded-full w-[70%]"></div>
 
@@ -138,13 +138,13 @@ const Dashboard = () => {
                   Business Roadmap Completion
                 </p>
 
-                <p className="text-green-700 font-semibold">
+                <p className="text-green-700 dark:text-green-400 font-semibold">
                   {roadmapProgress}%
                 </p>
 
               </div>
 
-              <div className="w-full bg-gray-200 rounded-full h-4">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
 
                 <div
                   className="bg-green-600 h-4 rounded-full transition-all duration-500"
@@ -164,13 +164,13 @@ const Dashboard = () => {
                   Skill Development
                 </p>
 
-                <p className="text-purple-700 font-semibold">
+                <p className="text-purple-700 dark:text-purple-400 font-semibold">
                   80%
                 </p>
 
               </div>
 
-              <div className="w-full bg-gray-200 rounded-full h-4">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
 
                 <div className="bg-purple-600 h-4 rounded-full w-[80%]"></div>
 
@@ -183,7 +183,7 @@ const Dashboard = () => {
         </div>
 
         {/* CONNECTED MENTORS */}
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-md p-10 mt-12">
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md p-10 mt-12">
 
           <div className="flex items-center justify-between">
 
@@ -191,7 +191,7 @@ const Dashboard = () => {
               Connected Mentors 🤝
             </h2>
 
-            <p className="text-blue-700 font-semibold">
+            <p className="text-blue-700 dark:text-blue-400 font-semibold">
               {connectedMentors.length} Connected
             </p>
 
@@ -213,7 +213,7 @@ const Dashboard = () => {
 
                     <div
                       key={index}
-                      className="bg-gray-50 dark:bg-gray-700 p-6 rounded-2xl"
+                      className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-6 rounded-2xl"
                     >
 
                       <div className="text-5xl">
@@ -224,7 +224,7 @@ const Dashboard = () => {
                         {mentor.name}
                       </h3>
 
-                      <p className="mt-2 text-blue-700 font-medium">
+                      <p className="mt-2 text-blue-700 dark:text-blue-400 font-medium">
                         {mentor.expertise}
                       </p>
 
@@ -232,7 +232,7 @@ const Dashboard = () => {
                         {mentor.experience}
                       </p>
 
-                      <span className="inline-block mt-4 bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm">
+                      <span className="inline-block mt-4 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-1 rounded-full text-sm">
                         {mentor.category}
                       </span>
 
