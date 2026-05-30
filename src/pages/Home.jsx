@@ -71,19 +71,51 @@ const Home = () => {
 
               <div className="space-y-4">
 
-                <div className="bg-blue-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl">
+                {/* Tailoring */}
+                <div
+                  onClick={() =>
+                    navigate("/explore", {
+                      state: { selectedSkill: "Tailoring" }
+                    })
+                  }
+                  className="bg-blue-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl cursor-pointer hover:scale-105 hover:bg-blue-100 dark:hover:bg-gray-600 transition duration-300"
+                >
                   🎨 Tailoring Business
                 </div>
 
-                <div className="bg-indigo-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl">
+                {/* Food */}
+                <div
+                  onClick={() =>
+                    navigate("/explore", {
+                      state: { selectedSkill: "Cooking" }
+                    })
+                  }
+                  className="bg-indigo-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl cursor-pointer hover:scale-105 hover:bg-indigo-100 dark:hover:bg-gray-600 transition duration-300"
+                >
                   🍲 Homemade Food Startup
                 </div>
 
-                <div className="bg-purple-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl">
+                {/* Freelancing */}
+                <div
+                  onClick={() =>
+                    navigate("/explore", {
+                      state: { selectedSkill: "Digital Skills" }
+                    })
+                  }
+                  className="bg-purple-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl cursor-pointer hover:scale-105 hover:bg-purple-100 dark:hover:bg-gray-600 transition duration-300"
+                >
                   💻 Freelancing Services
                 </div>
 
-                <div className="bg-pink-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl">
+                {/* Repair */}
+                <div
+                  onClick={() =>
+                    navigate("/explore", {
+                      state: { selectedSkill: "Repairing" }
+                    })
+                  }
+                  className="bg-pink-50 dark:bg-gray-700 dark:text-white p-4 rounded-xl cursor-pointer hover:scale-105 hover:bg-pink-100 dark:hover:bg-gray-600 transition duration-300"
+                >
                   🛠 Repair & Technical Services
                 </div>
 
@@ -123,121 +155,151 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8 mt-16">
 
             {/* Card 1 */}
-            <div className="bg-blue-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
+            <div
+              onClick={() => navigate("/explore")}
+              className="bg-blue-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer border border-transparent hover:border-blue-300"
+            >
 
-              <div className="text-5xl mb-5">
+              <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-4xl">
                 💡
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mt-6">
                 Business Recommendations
               </h3>
 
               <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
-
                 Discover business opportunities based on your practical skills,
                 interests, and entrepreneurial goals.
+              </p>
 
+              <p className="mt-6 text-blue-600 dark:text-blue-400 font-medium">
+                Click to Explore →
               </p>
 
             </div>
 
             {/* Card 2 */}
-            <div className="bg-indigo-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
+            <div
+              onClick={() => navigate("/roadmap/tailoring")}
+              className="bg-indigo-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer border border-transparent hover:border-indigo-300"
+            >
 
-              <div className="text-5xl mb-5">
-                🛣
+              <div className="w-20 h-20 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center text-4xl">
+                🛣️
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mt-6">
                 Step-by-Step Roadmaps
               </h3>
 
               <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
-
                 Learn exactly how to start, manage, market, and grow
                 your business with structured guidance.
+              </p>
 
+              <p className="mt-6 text-indigo-600 dark:text-indigo-400 font-medium">
+                View Roadmaps →
               </p>
 
             </div>
 
             {/* Card 3 */}
-            <div className="bg-purple-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
+            <div
+              onClick={() => navigate("/learning")}
+              className="bg-purple-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer border border-transparent hover:border-purple-300"
+            >
 
-              <div className="text-5xl mb-5">
+              <div className="w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center text-4xl">
                 📚
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mt-6">
                 Learning Resources
               </h3>
 
               <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
-
                 Access videos, articles, and checklists designed to help
                 beginners build business confidence.
+              </p>
 
+              <p className="mt-6 text-purple-600 dark:text-purple-400 font-medium">
+                Start Learning →
               </p>
 
             </div>
 
             {/* Card 4 */}
-            <div className="bg-pink-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
+            <div
+              onClick={() => navigate("/mentors")}
+              className="bg-pink-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer border border-transparent hover:border-pink-300"
+            >
 
-              <div className="text-5xl mb-5">
+              <div className="w-20 h-20 bg-pink-100 dark:bg-pink-900/30 rounded-2xl flex items-center justify-center text-4xl">
                 👨‍🏫
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mt-6">
                 Mentor Guidance
               </h3>
 
               <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
-
                 Connect with experienced mentors who can guide and support
                 your entrepreneurial journey.
+              </p>
 
+              <p className="mt-6 text-pink-600 dark:text-pink-400 font-medium">
+                Meet Mentors →
               </p>
 
             </div>
 
             {/* Card 5 */}
-            <div className="bg-yellow-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
+            <div
+              onClick={() => navigate("/dashboard")}
+              className="bg-yellow-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer border border-transparent hover:border-yellow-300"
+            >
 
-              <div className="text-5xl mb-5">
+              <div className="w-20 h-20 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center text-4xl">
                 📈
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mt-6">
                 Progress Tracking
               </h3>
 
               <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
-
                 Track your learning journey, completed roadmaps,
                 and business development progress.
+              </p>
 
+              <p className="mt-6 text-yellow-600 dark:text-yellow-400 font-medium">
+                Open Dashboard →
               </p>
 
             </div>
 
             {/* Card 6 */}
-            <div className="bg-green-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
+            <div
+              onClick={() => navigate("/skill-assessment")}
+              className="bg-green-50 dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer border border-transparent hover:border-green-300"
+            >
 
-              <div className="text-5xl mb-5">
+              <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center text-4xl">
                 🚀
               </div>
 
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mt-6">
                 Skill-Based Growth
               </h3>
 
               <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
-
                 Empower your existing skills and transform them into
                 profitable and sustainable business opportunities.
+              </p>
 
+              <p className="mt-6 text-green-600 dark:text-green-400 font-medium">
+                Start Assessment →
               </p>
 
             </div>
@@ -272,7 +334,10 @@ const Home = () => {
           {/* Steps */}
           <div className="grid md:grid-cols-3 gap-10 mt-20">
 
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md text-center">
+  <div
+  onClick={() => navigate("/skill-assessment")}
+  className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md text-center cursor-pointer hover:shadow-xl hover:scale-105 transition"
+>
 
               <div className="w-16 h-16 bg-blue-100 text-blue-700 flex items-center justify-center rounded-full mx-auto text-2xl font-bold">
                 1
@@ -288,7 +353,10 @@ const Home = () => {
 
             </div>
 
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md text-center">
+            <div
+  onClick={() => navigate("/explore")}
+  className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md text-center cursor-pointer hover:shadow-xl hover:scale-105 transition"
+>
 
               <div className="w-16 h-16 bg-indigo-100 text-indigo-700 flex items-center justify-center rounded-full mx-auto text-2xl font-bold">
                 2
@@ -304,7 +372,10 @@ const Home = () => {
 
             </div>
 
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md text-center">
+           <div
+  onClick={() => navigate("/roadmap/tailoring")}
+  className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md text-center cursor-pointer hover:shadow-xl hover:scale-105 transition"
+>
 
               <div className="w-16 h-16 bg-purple-100 text-purple-700 flex items-center justify-center rounded-full mx-auto text-2xl font-bold">
                 3
@@ -349,48 +420,56 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8 mt-16">
 
             {[
-              {
-                icon: "👗",
-                title: "Tailoring & Fashion",
-                desc: "Start tailoring services, boutique businesses, fashion design, and custom clothing ventures.",
-                color: "bg-blue-50",
-              },
-              {
-                icon: "🍲",
-                title: "Food & Catering",
-                desc: "Explore homemade food businesses, catering, snack services, and cloud kitchen ideas.",
-                color: "bg-orange-50",
-              },
-              {
-                icon: "🎨",
-                title: "Handicrafts",
-                desc: "Build creative businesses around handmade products, art, crafts, and customized gift items.",
-                color: "bg-purple-50",
-              },
-              {
-                icon: "🛠",
-                title: "Repair Services",
-                desc: "Start repair and maintenance services for electronics, appliances, mobile devices, and equipment.",
-                color: "bg-green-50",
-              },
-              {
-                icon: "💻",
-                title: "Freelancing & Digital Skills",
-                desc: "Offer services like graphic design, web development, content writing, and social media management.",
-                color: "bg-indigo-50",
-              },
-              {
-                icon: "💄",
-                title: "Beauty & Wellness",
-                desc: "Explore salon services, makeup artistry, skincare guidance, and wellness coaching.",
-                color: "bg-pink-50",
-              },
+  {
+    icon: "👗",
+    title: "Tailoring & Fashion",
+    desc: "Start tailoring services, boutique businesses, fashion design, and custom clothing ventures.",
+    color: "bg-blue-50",
+    roadmap: "tailoring",
+  },
+  {
+    icon: "🍲",
+    title: "Food & Catering",
+    desc: "Explore homemade food businesses, catering, snack services, and cloud kitchen ideas.",
+    color: "bg-orange-50",
+    roadmap: "cooking",
+  },
+  {
+    icon: "🎨",
+    title: "Handicrafts",
+    desc: "Build creative businesses around handmade products, art, crafts, and customized gift items.",
+    color: "bg-purple-50",
+    roadmap: "handicrafts",
+  },
+  {
+    icon: "🛠",
+    title: "Repair Services",
+    desc: "Start repair and maintenance services for electronics, appliances, mobile devices, and equipment.",
+    color: "bg-green-50",
+    roadmap: "repairing",
+  },
+  {
+    icon: "💻",
+    title: "Freelancing & Digital Skills",
+    desc: "Offer services like graphic design, web development, content writing, and social media management.",
+    color: "bg-indigo-50",
+    roadmap: "digital-skills",
+  },
+  {
+    icon: "💄",
+    title: "Beauty & Wellness",
+    desc: "Explore salon services, makeup artistry, skincare guidance, and wellness coaching.",
+    color: "bg-pink-50",
+    roadmap: "beauty",
+  },
+
             ].map((item, index) => (
 
               <div
-                key={index}
-                className={`${item.color} dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-lg transition`}
-              >
+  key={index}
+  onClick={() => navigate(`/roadmap/${item.roadmap}`)}
+  className={`${item.color} dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:scale-105 transition cursor-pointer`}
+>
 
                 <div className="text-5xl mb-5">
                   {item.icon}
@@ -403,6 +482,9 @@ const Home = () => {
                 <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
                   {item.desc}
                 </p>
+                <p className="mt-5 text-blue-500 font-semibold">
+  View Roadmap →
+</p>
 
               </div>
 
@@ -437,56 +519,63 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8 mt-16">
 
             {[
-              {
-                icon: "👨‍🏫",
-                name: "Rajesh Sharma",
-                role: "Business Strategy Mentor",
-                desc: "Helps beginners build sustainable business models, validate ideas, and improve business planning.",
-                bg: "bg-blue-100",
-                color: "text-blue-600",
-              },
-              {
-                icon: "👩‍💼",
-                name: "Priya Mehta",
-                role: "Marketing & Branding Expert",
-                desc: "Guides entrepreneurs on branding, social media marketing, customer engagement, and online growth strategies.",
-                bg: "bg-pink-100",
-                color: "text-pink-600",
-              },
-              {
-                icon: "👨‍💻",
-                name: "Arjun Verma",
-                role: "Digital Skills Trainer",
-                desc: "Supports learners in freelancing, digital services, web tools, and building online income opportunities.",
-                bg: "bg-green-100",
-                color: "text-green-600",
-              },
-            ].map((mentor, index) => (
+  {
+    icon: "👨‍🏫",
+    name: "Rajesh Sharma",
+    role: "Business Strategy Mentor",
+    desc: "Helps beginners build sustainable business models, validate ideas, and improve business planning.",
+    bg: "bg-blue-100",
+    color: "text-blue-600",
+  },
+  {
+    icon: "👩‍💼",
+    name: "Priya Mehta",
+    role: "Marketing & Branding Expert",
+    desc: "Guides entrepreneurs on branding, social media marketing, customer engagement, and online growth strategies.",
+    bg: "bg-pink-100",
+    color: "text-pink-600",
+  },
+  {
+    icon: "👨‍💻",
+    name: "Arjun Verma",
+    role: "Digital Skills Trainer",
+    desc: "Supports learners in freelancing, digital services, web tools, and building online income opportunities.",
+    bg: "bg-green-100",
+    color: "text-green-600",
+  },
+].map((mentor, index) => (
 
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-xl transition text-center"
-              >
+  <div
+    key={index}
+    onClick={() => navigate("/mentors")}
+    className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition duration-300 text-center cursor-pointer"
+  >
 
-                <div className={`w-24 h-24 ${mentor.bg} rounded-full flex items-center justify-center text-4xl mx-auto`}>
-                  {mentor.icon}
-                </div>
+    <div
+      className={`w-24 h-24 ${mentor.bg} rounded-full flex items-center justify-center text-4xl mx-auto`}
+    >
+      {mentor.icon}
+    </div>
 
-                <h3 className="text-2xl font-semibold mt-6 text-gray-800 dark:text-white">
-                  {mentor.name}
-                </h3>
+    <h3 className="text-2xl font-semibold mt-6 text-gray-800 dark:text-white">
+      {mentor.name}
+    </h3>
 
-                <p className={`${mentor.color} mt-2 font-medium`}>
-                  {mentor.role}
-                </p>
+    <p className={`${mentor.color} mt-2 font-medium`}>
+      {mentor.role}
+    </p>
 
-                <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
-                  {mentor.desc}
-                </p>
+    <p className="mt-4 text-gray-600 dark:text-gray-300 leading-7">
+      {mentor.desc}
+    </p>
 
-              </div>
+    <p className="mt-5 text-blue-500 font-semibold">
+      Connect with Mentor →
+    </p>
 
-            ))}
+  </div>
+
+))}
 
           </div>
 

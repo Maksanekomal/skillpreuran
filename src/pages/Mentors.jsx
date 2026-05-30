@@ -1,10 +1,14 @@
 
+
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Mentors = () => {
+  const navigate = useNavigate();
+
   const [connectedMentors, setConnectedMentors] = useState([]);
 
-  // LOAD CONNECTED MENTORS
   useEffect(() => {
     const savedMentors =
       JSON.parse(localStorage.getItem("connectedMentors")) || [];
@@ -68,13 +72,21 @@ const Mentors = () => {
     },
   ];
 
-  // CONNECT MENTOR
-  const connectMentor = (mentor) => {
-    const alreadyConnected = connectedMentors.find(
-      (m) => m.name === mentor.name
-    );
+  const connectMentor = async (mentor) => {
+    try {
+      const alreadyConnected = connectedMentors.find(
+        (m) => m.name === mentor.name
+      );
 
-    if (!alreadyConnected) {
+      if (alreadyConnected) {
+        alert("Already connected to this mentor");
+        return;
+      }
+
+      const res = await axios.post(
+        `http://localhost:5000/api/mentors/connect/${mentor.name}`
+      );
+
       const updatedMentors = [...connectedMentors, mentor];
 
       setConnectedMentors(updatedMentors);
@@ -84,15 +96,16 @@ const Mentors = () => {
         JSON.stringify(updatedMentors)
       );
 
-      alert("Mentor Connected Successfully 🚀");
+      alert(res.data.message || "Mentor Connected Successfully 🚀");
+    } catch (error) {
+      console.log(error);
+      alert("Failed to connect mentor");
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-950 py-16 px-6 transition-colors duration-300">
-
       <div className="max-w-7xl mx-auto">
-
         {/* HEADER */}
         <div className="text-center">
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white">
@@ -100,8 +113,8 @@ const Mentors = () => {
           </h1>
 
           <p className="mt-5 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-8">
-            Connect with experienced mentors who can guide, support, and help
-            you grow your entrepreneurial journey.
+            Connect with experienced mentors who can guide, support,
+            and help you grow your entrepreneurial journey.
           </p>
         </div>
 
@@ -117,7 +130,6 @@ const Mentors = () => {
 
               {/* DETAILS */}
               <div className="mt-6">
-
                 <span className="bg-white dark:bg-gray-800 px-4 py-1 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200">
                   {mentor.category}
                 </span>
@@ -147,21 +159,36 @@ const Mentors = () => {
                   </span>
                 </div>
 
-                {/* BUTTON */}
-                <button
-                  onClick={() => connectMentor(mentor)}
-                  className="mt-6 bg-white dark:bg-gray-800 px-5 py-2 rounded-xl text-blue-700 dark:text-blue-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-                >
-                  {connectedMentors.find((m) => m.name === mentor.name)
-                    ? "Connected ✅"
-                    : "Connect Mentor"}
-                </button>
+                {/* BUTTONS */}
+                <div className="flex gap-3 mt-6">
+                  <button
+                    onClick={() =>
+                      navigate(
+                        `/mentor/${mentor.name
+                          .toLowerCase()
+                          .replaceAll(" ", "-")}`
+                      )
+                    }
+                    className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
+                  >
+                    View Profile
+                  </button>
 
+                  <button
+                    onClick={() => connectMentor(mentor)}
+                    className="bg-white dark:bg-gray-800 px-4 py-2 rounded-xl text-blue-700 dark:text-blue-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                  >
+                    {connectedMentors.find(
+                      (m) => m.name === mentor.name
+                    )
+                      ? "Connected ✅"
+                      : "Connect"}
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

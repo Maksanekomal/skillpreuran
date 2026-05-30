@@ -1,13 +1,16 @@
 
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SkillAssessment = () => {
 
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const [selectedSkill, setSelectedSkill] = useState("");
+  const [selectedSkill, setSelectedSkill] = useState(
+    location.state?.selectedSkill || ""
+  );
 
   const [businessIdeas, setBusinessIdeas] = useState([]);
 
@@ -69,7 +72,21 @@ const SkillAssessment = () => {
     setBusinessIdeas(
       skillIdeas[selectedSkill] || []
     );
+
   };
+
+  // AUTO LOAD IDEAS FROM HOME PAGE
+  useEffect(() => {
+
+    if (location.state?.selectedSkill) {
+
+      setBusinessIdeas(
+        skillIdeas[location.state.selectedSkill] || []
+      );
+
+    }
+
+  }, []);
 
   return (
 
@@ -205,17 +222,15 @@ const SkillAssessment = () => {
 
                           {/* ROADMAP BUTTON */}
                           <button
-                            onClick={() =>
-                              navigate("/roadmap", {
-                                state: { idea }
-                              })
-                            }
-                            className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-5 py-2 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition"
-                          >
+  onClick={() =>
+    navigate(`/roadmap/${selectedSkill.toLowerCase()}`)
+  }
+  className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-5 py-2 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition"
+>
 
-                            Explore Roadmap
+  Explore Roadmap
 
-                          </button>
+</button>
 
                           {/* SAVE BUTTON */}
                           <button

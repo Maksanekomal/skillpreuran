@@ -44,11 +44,9 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           <Link to="/explore" className="hover:text-blue-600 transition">
             Find Ideas
           </Link>
-
-          <Link to="/assessment" className="hover:text-blue-600 transition">
-            Skill Assessment
-          </Link>
-
+<Link to="/skill-assessment" className="hover:text-blue-600 transition">
+  Skill Assessment
+</Link>
           <Link to="/saved-ideas" className="hover:text-blue-600 transition">
             Saved Ideas
           </Link>

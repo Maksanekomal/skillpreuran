@@ -19,6 +19,7 @@ import Dashboard from "./pages/Dashboard";
 import SavedIdeas from "./pages/SavedIdeas";
 import Mentors from "./pages/Mentors";
 import Recommendations from "./pages/Recommendations";
+import MentorDetails from "./pages/MentorDetails";
 
 function App() {
 
@@ -56,9 +57,9 @@ function App() {
               <Route path="/mentors" element={<Mentors />} />
 
               <Route
-                path="/assessment"
-                element={<SkillAssessment />}
-              />
+  path="/skill-assessment"
+  element={<SkillAssessment />}
+/>
 
               <Route path="/learning" element={<Learning />} />
 
@@ -71,6 +72,10 @@ function App() {
                 }
               />
 
+            <Route
+  path="/mentor/:mentorName"
+  element={<MentorDetails />}
+/>
               <Route
                 path="/saved-ideas"
                 element={
