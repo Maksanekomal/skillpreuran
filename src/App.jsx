@@ -20,6 +20,9 @@ import SavedIdeas from "./pages/SavedIdeas";
 import Mentors from "./pages/Mentors";
 import Recommendations from "./pages/Recommendations";
 import MentorDetails from "./pages/MentorDetails";
+import Chat from "./pages/Chat";
+import SessionRoom from "./pages/SessionRoom";
+import MentorDashboard from "./pages/MentorDashboard";
 
 function App() {
 
@@ -89,6 +92,21 @@ function App() {
                 path="/recommendations"
                 element={<Recommendations />}
               />
+
+              <Route
+  path="/chat/:mentorId"
+  element={<Chat />}
+/>
+
+<Route
+  path="/session/:mentorName"
+  element={<SessionRoom />}
+/>
+
+<Route
+  path="/mentor-dashboard"
+  element={<MentorDashboard />}
+/>
 
             </Routes>
 

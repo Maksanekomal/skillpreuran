@@ -12,6 +12,9 @@ const Dashboard = () => {
   const connectedMentors =
     JSON.parse(localStorage.getItem("connectedMentors")) || [];
 
+    const mentorBookings =
+  JSON.parse(localStorage.getItem("mentorBookings")) || [];
+
   // GET COMPLETED ROADMAP STEPS
   const completedSteps =
     JSON.parse(localStorage.getItem("completedSteps")) || [];
@@ -249,6 +252,137 @@ const Dashboard = () => {
         </div>
 
       </div>
+      {/* UPCOMING SESSIONS */}
+
+{/* UPCOMING SESSIONS */}
+
+<div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-md p-10 mt-12">
+
+  <div className="flex items-center justify-between">
+
+    <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+      Upcoming Sessions 📅
+    </h2>
+
+    <p className="text-blue-600 font-semibold">
+      {mentorBookings.length} Booked
+    </p>
+
+  </div>
+
+  {mentorBookings.length === 0 ? (
+
+    <p className="mt-6 text-gray-500 dark:text-gray-300">
+      No sessions booked yet.
+    </p>
+
+  ) : (
+
+    <div className="grid md:grid-cols-2 gap-6 mt-8">
+
+      {mentorBookings.map((booking, index) => {
+
+        const sessionDate = new Date(
+          `${booking.date}T${booking.time}`
+        );
+
+        const now = new Date();
+
+        const canJoin = now >= sessionDate;
+
+        const cancelBooking = () => {
+          const updatedBookings =
+            mentorBookings.filter(
+              (_, i) => i !== index
+            );
+
+          localStorage.setItem(
+            "mentorBookings",
+            JSON.stringify(updatedBookings)
+          );
+
+          window.location.reload();
+        };
+
+        return (
+
+          <div
+            key={index}
+            className="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-6 rounded-2xl"
+          >
+
+            <div className="flex justify-between items-center">
+
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                {booking.mentor}
+              </h3>
+
+              <span
+                className={`px-3 py-1 rounded-full text-sm font-medium ${
+                  canJoin
+                    ? "bg-green-100 text-green-700"
+                    : "bg-yellow-100 text-yellow-700"
+                }`}
+              >
+                {canJoin
+                  ? "Ready"
+                  : "Upcoming"}
+              </span>
+
+            </div>
+
+            <p className="mt-4 text-gray-600 dark:text-gray-300">
+              📅 {booking.date}
+            </p>
+
+            <p className="mt-2 text-gray-600 dark:text-gray-300">
+              ⏰ {booking.time}
+            </p>
+
+            <p className="mt-2 text-blue-600 font-medium">
+              {booking.status}
+            </p>
+
+            <div className="flex gap-3 mt-5">
+
+              <button
+                disabled={!canJoin}
+                onClick={() => {
+                  if (canJoin) {
+                    window.location.href =
+                      `/session/${booking.mentor}`;
+                  }
+                }}
+                className={`px-5 py-2 rounded-xl text-white ${
+                  canJoin
+                    ? "bg-green-600 hover:bg-green-700"
+                    : "bg-gray-400 cursor-not-allowed"
+                }`}
+              >
+                {canJoin
+                  ? "Join Session"
+                  : "Waiting for Session"}
+              </button>
+
+              <button
+                onClick={cancelBooking}
+                className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-xl"
+              >
+                Cancel
+              </button>
+
+            </div>
+
+          </div>
+
+        );
+      })}
+
+    </div>
+
+  )}
+
+</div>
 
     </div>
   );

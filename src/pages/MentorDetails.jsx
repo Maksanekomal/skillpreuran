@@ -1,9 +1,10 @@
 
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const MentorDetails = () => {
-  const { mentorName } = useParams();
+ const { mentorName } = useParams();
+const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -232,16 +233,14 @@ const MentorDetails = () => {
           >
             Book Session
           </button>
-
-          <button
+<button
   onClick={() =>
-    alert(`Message request sent to ${mentor.name} 📩`)
+    navigate(`/chat/${mentorName}`)
   }
   className="bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700 transition"
 >
   Send Message
 </button>
-
         </div>
 
       </div>

@@ -101,7 +101,12 @@ const Footer = () => {
             >
               Startup Guidance
             </Link>
-
+<Link
+  to="/mentor-dashboard"
+  className="text-gray-400 hover:text-white"
+>
+  Mentor Dashboard
+</Link>
           </div>
 
         </div>

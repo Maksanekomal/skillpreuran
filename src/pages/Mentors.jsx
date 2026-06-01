@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 
 const Mentors = () => {
   const navigate = useNavigate();
@@ -12,6 +12,7 @@ const Mentors = () => {
   useEffect(() => {
     const savedMentors =
       JSON.parse(localStorage.getItem("connectedMentors")) || [];
+
     setConnectedMentors(savedMentors);
   }, []);
 
@@ -72,21 +73,12 @@ const Mentors = () => {
     },
   ];
 
-  const connectMentor = async (mentor) => {
-    try {
-      const alreadyConnected = connectedMentors.find(
-        (m) => m.name === mentor.name
-      );
+  const connectMentor = (mentor) => {
+    const alreadyConnected = connectedMentors.find(
+      (m) => m.name === mentor.name
+    );
 
-      if (alreadyConnected) {
-        alert("Already connected to this mentor");
-        return;
-      }
-
-      const res = await axios.post(
-        `http://localhost:5000/api/mentors/connect/${mentor.name}`
-      );
-
+    if (!alreadyConnected) {
       const updatedMentors = [...connectedMentors, mentor];
 
       setConnectedMentors(updatedMentors);
@@ -96,18 +88,18 @@ const Mentors = () => {
         JSON.stringify(updatedMentors)
       );
 
-      alert(res.data.message || "Mentor Connected Successfully 🚀");
-    } catch (error) {
-      console.log(error);
-      alert("Failed to connect mentor");
+      alert("Mentor Connected Successfully 🚀");
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-950 py-16 px-6 transition-colors duration-300">
+
       <div className="max-w-7xl mx-auto">
+
         {/* HEADER */}
         <div className="text-center">
+
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white">
             Meet Our Mentors
           </h1>
@@ -116,20 +108,27 @@ const Mentors = () => {
             Connect with experienced mentors who can guide, support,
             and help you grow your entrepreneurial journey.
           </p>
+
         </div>
 
         {/* MENTOR GRID */}
         <div className="grid md:grid-cols-3 gap-8 mt-16">
+
           {mentors.map((mentor, index) => (
+
             <div
               key={index}
               className={`${mentor.color} dark:text-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-transparent dark:border-gray-800`}
             >
+
               {/* ICON */}
-              <div className="text-6xl">{mentor.image}</div>
+              <div className="text-6xl">
+                {mentor.image}
+              </div>
 
               {/* DETAILS */}
               <div className="mt-6">
+
                 <span className="bg-white dark:bg-gray-800 px-4 py-1 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200">
                   {mentor.category}
                 </span>
@@ -148,6 +147,7 @@ const Mentors = () => {
 
                 {/* AVAILABILITY */}
                 <div className="mt-4">
+
                   <span
                     className={`px-4 py-1 rounded-full text-sm font-medium ${
                       mentor.availability === "Available"
@@ -157,10 +157,12 @@ const Mentors = () => {
                   >
                     {mentor.availability}
                   </span>
+
                 </div>
 
                 {/* BUTTONS */}
                 <div className="flex gap-3 mt-6">
+
                   <button
                     onClick={() =>
                       navigate(
@@ -184,12 +186,19 @@ const Mentors = () => {
                       ? "Connected ✅"
                       : "Connect"}
                   </button>
+
                 </div>
+
               </div>
+
             </div>
+
           ))}
+
         </div>
+
       </div>
+
     </div>
   );
 };
