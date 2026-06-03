@@ -292,17 +292,18 @@ const navigate = useNavigate();
               className="w-full border p-3 rounded-lg mb-4"
             />
 
-            <input
-              type="time"
-              value={bookingData.time}
-              onChange={(e) =>
-                setBookingData({
-                  ...bookingData,
-                  time: e.target.value,
-                })
-              }
-              className="w-full border p-3 rounded-lg mb-6"
-            />
+          <input
+  type="text"
+  placeholder="Enter Time (e.g. 02:30 PM)"
+  value={bookingData.time}
+  onChange={(e) =>
+    setBookingData({
+      ...bookingData,
+      time: e.target.value,
+    })
+  }
+  className="w-full border p-3 rounded-lg mb-6"
+/>
 
             <div className="flex gap-4">
 

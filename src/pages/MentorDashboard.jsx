@@ -1,15 +1,11 @@
 
 
-
 import React from "react";
-<button
-  onClick={() => navigate("/mentor-dashboard")}
-  className="bg-indigo-600 text-white px-5 py-3 rounded-xl hover:bg-indigo-700"
->
-  Open Mentor Dashboard 👨‍🏫
-</button>
+import { useNavigate } from "react-router-dom";
 
 const MentorDashboard = () => {
+  const navigate = useNavigate();
+
   const mentorBookings =
     JSON.parse(localStorage.getItem("mentorBookings")) || [];
 
@@ -24,54 +20,64 @@ const MentorDashboard = () => {
 
       <div className="max-w-7xl mx-auto">
 
-        <h1 className="text-4xl font-bold mb-8 dark:text-white">
-          Mentor Dashboard 👨‍🏫
-        </h1>
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-8">
+
+          <div>
+            <h1 className="text-4xl font-bold dark:text-white">
+              Mentor Dashboard 👨‍🏫
+            </h1>
+
+            <p className="text-gray-500 dark:text-gray-400 mt-2">
+              Manage sessions, students and learning resources.
+            </p>
+          </div>
+
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl"
+          >
+            Student Dashboard
+          </button>
+
+        </div>
 
         {/* STATS */}
-
         <div className="grid md:grid-cols-3 gap-6">
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
-
-            <h2 className="text-3xl font-bold text-blue-600">
+            <h2 className="text-4xl font-bold text-blue-600">
               {totalSessions}
             </h2>
 
             <p className="mt-2 dark:text-gray-300">
               Total Sessions
             </p>
-
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
-
-            <h2 className="text-3xl font-bold text-green-600">
+            <h2 className="text-4xl font-bold text-green-600">
               {totalStudents}
             </h2>
 
             <p className="mt-2 dark:text-gray-300">
               Total Students
             </p>
-
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow">
-
-            <h2 className="text-3xl font-bold text-purple-600">
-              0
-            </h2>
+            <h2 className="text-4xl font-bold text-purple-600">
+  3
+</h2>
 
             <p className="mt-2 dark:text-gray-300">
               Resources Uploaded
             </p>
-
           </div>
 
         </div>
 
         {/* UPCOMING SESSIONS */}
-
         <div className="bg-white dark:bg-gray-800 mt-10 p-8 rounded-2xl shadow">
 
           <h2 className="text-2xl font-bold mb-6 dark:text-white">
@@ -79,44 +85,170 @@ const MentorDashboard = () => {
           </h2>
 
           {mentorBookings.length === 0 ? (
-            <p className="text-gray-500">
-              No sessions booked.
+
+            <p className="text-gray-500 dark:text-gray-400">
+              No sessions booked yet.
             </p>
+
           ) : (
-            <div className="space-y-4">
 
-              {mentorBookings.map((booking, index) => (
+            <div className="space-y-5">
 
-                <div
-                  key={index}
-                  className="border dark:border-gray-700 p-4 rounded-xl"
-                >
+             {mentorBookings.map((booking, index) => (
 
-                  <h3 className="font-bold text-lg dark:text-white">
-                    {booking.name}
-                  </h3>
+  <div
+    key={index}
+    className="border dark:border-gray-700 p-5 rounded-2xl flex justify-between items-center"
+  >
 
-                  <p className="dark:text-gray-300">
-                    📧 {booking.email}
-                  </p>
+    <div>
 
-                  <p className="dark:text-gray-300">
-                    📅 {booking.date}
-                  </p>
+      <h3 className="text-xl font-bold dark:text-white">
+        {booking.name}
+      </h3>
 
-                  <p className="dark:text-gray-300">
-                    ⏰ {booking.time}
-                  </p>
+      <p className="mt-2 text-gray-600 dark:text-gray-300">
+        📧 {booking.email}
+      </p>
 
-                  <p className="text-blue-600 mt-2">
-                    Mentor: {booking.mentor}
-                  </p>
+      <p className="mt-2 text-gray-600 dark:text-gray-300">
+        📅 {booking.date}
+      </p>
 
-                </div>
+      <p className="mt-2 text-gray-600 dark:text-gray-300">
+        ⏰ {booking.time}
+      </p>
 
-              ))}
+      <p className="mt-2 text-blue-600">
+        Mentor: {booking.mentor}
+      </p>
 
+      <div className="flex gap-3 mt-4">
+
+        <button
+          onClick={() =>
+            navigate(`/session/${booking.mentor}`)
+          }
+          className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-xl"
+        >
+          Start Session
+        </button>
+
+        <button
+          onClick={() =>
+            alert(
+              `Student: ${booking.name}\nEmail: ${booking.email}`
+            )
+          }
+          className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-5 py-2 rounded-xl"
+        >
+          View Profile
+        </button>
+
+      </div>
+
+    </div>
+
+    <div>
+
+      <span className="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full text-sm">
+        Upcoming
+      </span>
+
+    </div>
+
+  </div>
+
+))}
+
+
+{/* LEARNING RESOURCES */}
+
+<div className="bg-white dark:bg-gray-800 mt-10 p-8 rounded-2xl shadow">
+
+  <h2 className="text-2xl font-bold mb-6 dark:text-white">
+    Learning Resources 📚
+  </h2>
+
+  <div className="grid md:grid-cols-3 gap-5">
+
+    <div className="border dark:border-gray-700 p-5 rounded-2xl">
+
+      <h3 className="font-bold dark:text-white">
+        Business Planning Guide
+      </h3>
+
+      <p className="text-gray-500 mt-2">
+        PDF Resource
+      </p>
+
+      <button
+        onClick={() =>
+         window.open(
+  "https://www.youtube.com/watch?v=nU-IIXBWlS4",
+  "_blank"
+)
+        }
+        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-xl"
+      >
+        View
+      </button>
+
+    </div>
+
+    <div className="border dark:border-gray-700 p-5 rounded-2xl">
+
+      <h3 className="font-bold dark:text-white">
+        Marketing Basics
+      </h3>
+
+      <p className="text-gray-500 mt-2">
+        Video Training
+      </p>
+
+      <button
+        onClick={() =>
+          window.open(
+            "https://www.youtube.com/results?search_query=digital+marketing+course",
+            "_blank"
+          )
+        }
+        className="mt-4 bg-green-600 text-white px-4 py-2 rounded-xl"
+      >
+        Watch
+      </button>
+
+    </div>
+
+    <div className="border dark:border-gray-700 p-5 rounded-2xl">
+
+      <h3 className="font-bold dark:text-white">
+        Startup Checklist
+      </h3>
+
+      <p className="text-gray-500 mt-2">
+        Downloadable Checklist
+      </p>
+
+      <button
+        onClick={() =>
+          window.open(
+            "https://www.score.org/resource/business-startup-checklist",
+            "_blank"
+          )
+        }
+        className="mt-4 bg-purple-600 text-white px-4 py-2 rounded-xl"
+      >
+        Download
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
             </div>
+
           )}
 
         </div>
