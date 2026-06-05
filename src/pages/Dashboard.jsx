@@ -1,28 +1,45 @@
 
-
 const Dashboard = () => {
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user =
+    JSON.parse(localStorage.getItem("user"));
 
-  // GET SAVED IDEAS
   const savedIdeas =
     JSON.parse(localStorage.getItem("savedIdeas")) || [];
 
-  // GET CONNECTED MENTORS
   const connectedMentors =
     JSON.parse(localStorage.getItem("connectedMentors")) || [];
 
-    const mentorBookings =
-  JSON.parse(localStorage.getItem("mentorBookings")) || [];
+  const mentorBookings =
+    JSON.parse(localStorage.getItem("mentorBookings")) || [];
 
-  // GET COMPLETED ROADMAP STEPS
+  const completedResources =
+    JSON.parse(localStorage.getItem("completedResources")) || [];
+
   const completedSteps =
     JSON.parse(localStorage.getItem("completedSteps")) || [];
+
+  const entrepreneurialLearning =
+    Math.min(savedIdeas.length * 10, 100);
+
+  const skillDevelopment =
+    Math.min(
+      (
+        connectedMentors.length +
+        mentorBookings.length +
+        completedSteps.length
+      ) * 10,
+      100
+    );
 
   const totalSteps = 4;
 
   const roadmapProgress =
-    Math.round((completedSteps.length / totalSteps) * 100);
+    Math.round(
+      (completedSteps.length / totalSteps) * 100
+    );
+
+  
 
   return (
 
@@ -76,9 +93,8 @@ const Dashboard = () => {
           <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-800 p-8 rounded-2xl">
 
             <h2 className="text-4xl font-bold text-purple-700 dark:text-purple-400">
-              5
-            </h2>
-
+  {completedResources.length}
+</h2>
             <p className="mt-3 text-gray-600 dark:text-gray-300">
               Resources Completed
             </p>
@@ -119,14 +135,19 @@ const Dashboard = () => {
                 </p>
 
                 <p className="text-blue-700 dark:text-blue-400 font-semibold">
-                  70%
+                  {entrepreneurialLearning}%
                 </p>
 
               </div>
 
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
 
-                <div className="bg-blue-600 h-4 rounded-full w-[70%]"></div>
+                <div
+  className="bg-blue-600 h-4 rounded-full transition-all duration-500"
+  style={{
+    width: `${entrepreneurialLearning}%`,
+  }}
+></div>
 
               </div>
 
@@ -168,15 +189,19 @@ const Dashboard = () => {
                 </p>
 
                 <p className="text-purple-700 dark:text-purple-400 font-semibold">
-                  80%
+                  {skillDevelopment}%
                 </p>
 
               </div>
 
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
 
-                <div className="bg-purple-600 h-4 rounded-full w-[80%]"></div>
-
+                <div
+  className="bg-purple-600 h-4 rounded-full transition-all duration-500"
+  style={{
+    width: `${skillDevelopment}%`,
+  }}
+></div>
               </div>
 
             </div>

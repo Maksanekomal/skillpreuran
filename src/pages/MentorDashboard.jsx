@@ -9,6 +9,9 @@ const MentorDashboard = () => {
   const mentorBookings =
     JSON.parse(localStorage.getItem("mentorBookings")) || [];
 
+    const completedResources =
+JSON.parse(localStorage.getItem("completedResources")) || [];
+
   const totalSessions = mentorBookings.length;
 
   const totalStudents = new Set(
@@ -181,18 +184,33 @@ const MentorDashboard = () => {
       <p className="text-gray-500 mt-2">
         PDF Resource
       </p>
+<button
+  onClick={() => {
 
-      <button
-        onClick={() =>
-         window.open(
-  "https://www.youtube.com/watch?v=nU-IIXBWlS4",
-  "_blank"
-)
-        }
-        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-xl"
-      >
-        View
-      </button>
+    const completedResources =
+      JSON.parse(
+        localStorage.getItem("completedResources")
+      ) || [];
+
+    completedResources.push({
+      name: "Business Planning Guide",
+    });
+
+    localStorage.setItem(
+      "completedResources",
+      JSON.stringify(completedResources)
+    );
+
+    window.open(
+      "https://www.youtube.com/watch?v=nU-IIXBWlS4",
+      "_blank"
+    );
+
+  }}
+  className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-xl"
+>
+  View
+</button>
 
     </div>
 
@@ -207,16 +225,32 @@ const MentorDashboard = () => {
       </p>
 
       <button
-        onClick={() =>
-          window.open(
-            "https://www.youtube.com/results?search_query=digital+marketing+course",
-            "_blank"
-          )
-        }
-        className="mt-4 bg-green-600 text-white px-4 py-2 rounded-xl"
-      >
-        Watch
-      </button>
+  onClick={() => {
+
+    const completedResources =
+      JSON.parse(
+        localStorage.getItem("completedResources")
+      ) || [];
+
+    completedResources.push({
+      name: "Marketing Basics",
+    });
+
+    localStorage.setItem(
+      "completedResources",
+      JSON.stringify(completedResources)
+    );
+
+    window.open(
+      "https://www.youtube.com/results?search_query=digital+marketing+course",
+      "_blank"
+    );
+
+  }}
+  className="mt-4 bg-green-600 text-white px-4 py-2 rounded-xl"
+>
+  Watch
+</button>
 
     </div>
 
@@ -230,17 +264,33 @@ const MentorDashboard = () => {
         Downloadable Checklist
       </p>
 
-      <button
-        onClick={() =>
-          window.open(
-            "https://www.score.org/resource/business-startup-checklist",
-            "_blank"
-          )
-        }
-        className="mt-4 bg-purple-600 text-white px-4 py-2 rounded-xl"
-      >
-        Download
-      </button>
+    <button
+  onClick={() => {
+
+    const completedResources =
+      JSON.parse(
+        localStorage.getItem("completedResources")
+      ) || [];
+
+    completedResources.push({
+      name: "Startup Checklist",
+    });
+
+    localStorage.setItem(
+      "completedResources",
+      JSON.stringify(completedResources)
+    );
+
+    window.open(
+      "https://www.score.org/resource/business-startup-checklist",
+      "_blank"
+    );
+
+  }}
+  className="mt-4 bg-purple-600 text-white px-4 py-2 rounded-xl"
+>
+  Download
+</button>
 
     </div>
 
