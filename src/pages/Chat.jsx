@@ -48,8 +48,8 @@ const Chat = () => {
   const fetchMessages = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/messages/${mentorId}`
-      );
+  `https://skillpreneur-backend.onrender.com/api/messages/${mentorId}`
+);
 
       setMessages(res.data.data);
     } catch (err) {
@@ -71,8 +71,8 @@ const Chat = () => {
     if (!text.trim()) return;
 
     try {
-      await axios.post(
-        "http://localhost:5000/api/messages",
+     await axios.post(
+  "https://skillpreneur-backend.onrender.com/api/messages",
         {
           mentorId,
           message: text,

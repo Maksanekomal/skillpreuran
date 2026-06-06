@@ -10,8 +10,8 @@ const Recommendations = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const response = await axios.get(
-          "http://localhost:5000/api/business-ideas/recommendations",
+        const response =await axios.get(
+  "https://skillpreneur-backend.onrender.com/api/business-ideas/recommendations",
           {
             headers: {
               Authorization: `Bearer ${token}`,
